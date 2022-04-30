@@ -41,6 +41,10 @@ async function handleFiles(files) {
 
 async function uploadFile(file) {
     let url = 'https://hf.space/embed/jph00/testing/+/api/predict/'
+    let apiSelectionInput = document.getElementById('apiSelectionInput');
+    if (apiSelectionInput.value.length > 0) {
+        url = apiSelectionInput.value;
+    }
     let reader = new FileReader()
     reader.readAsDataURL(file);
     reader.onloadend = function() {
@@ -65,6 +69,7 @@ async function uploadFile(file) {
                     confidenceBar.value = pred.confidence;
                     imgdiv.append(pred.label+' ');
                     imgdiv.appendChild(confidenceBar);
+                    imgdiv.append(' '+formatAsPercent(pred.confidence));
                     imgdiv.appendChild(document.createElement('br'))
                     i += 1;
                 }
@@ -95,3 +100,11 @@ function executeSearch() {
     // location.replace(searchUrl);
     window.open(searchUrl);
 }
+
+function formatAsPercent(num) {
+    return new Intl.NumberFormat('default', {
+      style: 'percent',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    }).format(num);
+  }

@@ -54,6 +54,16 @@
       <h1 class="mt-5">Dogs vs Cats</h1>
       <p class="lead">Using fast.ai and the &#129303; <code>API</code>, let a neural net determine if an image is of a Cat or a Dog.</p>
       <p>
+        <div class="form-group">
+          <label for="apiSelectionInput">You can also choose another <code>API</code> endpoint or enter your own! </label>
+          <input type="text" id="apiSelectionInput" name="example" list="apiDataList" class="form-control">
+          <datalist id="apiDataList">
+            <option value="https://hf.space/embed/jph00/testing/+/api/predict/">  
+            <option value="https://hf.space/embed/jph00/pets/+/api/predict/">
+          </datalist>
+        </div>
+      </p>
+      <p>
         <div id="drop-area">
             <form class="my-form">
               <p>Upload one or more images with the file dialog or by dragging and dropping images onto the dashed region</p>
@@ -67,7 +77,8 @@
 
     <footer class="footer">
       <div class="container">
-        <span class="text-muted">Making neural nets uncool again</span>
+        <span class="text-muted">Making neural nets uncool again.</span>
+        <span class="text-muted" style="float:right;">Page by @matdmiller</span>
       </div>
     </footer>
 
