@@ -34,4 +34,4 @@ def display_pred_result(img,preds):
         result_div.appendChild(break_element())
     results_div.appendChild(result_div)
 
-print('python is ready now...')
+get_element_by_id('python-status').innerHTML = "Python is ready now."
