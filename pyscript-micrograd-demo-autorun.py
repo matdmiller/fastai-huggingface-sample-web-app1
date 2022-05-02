@@ -1,10 +1,15 @@
+#cell
 import random
 import numpy as np
 import matplotlib.pyplot as plt
+import datetime
 
 #cell
 from micrograd.engine import Value
 from micrograd.nn import Neuron, Layer, MLP
+
+#cell
+start = datetime.datetime.now()
 
 #cell
 np.random.seed(1337)
@@ -88,35 +93,6 @@ for k in range(20): #was 100
         print(f"step {k} loss {total_loss.data}, accuracy {acc*100}%")
 
 #cell
-# optimization
-for k in range(20): #was 100
-    
-    # forward
-    total_loss, acc = loss()
-    
-    # backward
-    model.zero_grad()
-    total_loss.backward()
-    
-    # update (sgd)
-    learning_rate = 1.0 - 0.9*k/100
-    for p in model.parameters():
-        p.data -= learning_rate * p.grad
-    
-    if k % 1 == 0:
-        print(f"step {k} loss {total_loss.data}, accuracy {acc*100}%")
-    </py-repl><br>
-    <div>
-      Please wait for the training loop above to complete.  It will not print out stats until it is finished.<br>
-      This will take some time.<br><br>
-      Due to a current but in the pyscript the &gt; symbol is imported as &ampgt;.<br>
-      Line 9 has been changed from: <br> 
-      Z = np.array([s.data &gt; 0 for s in scores])<br>
-      to: <br>
-      Z = np.array([(s.data).__gt__(0) for s in scores])<br>
-      as a work-around to the bug.<br>
-    </div>
-    <py-repl auto-generate="true">
 h = 0.25
 x_min, x_max = X[:, 0].min() - 1, X[:, 0].max() + 1
 y_min, y_max = X[:, 1].min() - 1, X[:, 1].max() + 1
@@ -133,5 +109,9 @@ plt.contourf(xx, yy, Z, cmap=plt.cm.Spectral, alpha=0.8)
 plt.scatter(X[:, 0], X[:, 1], c=y, s=40, cmap=plt.cm.Spectral)
 plt.xlim(xx.min(), xx.max())
 plt.ylim(yy.min(), yy.max())
+
+finish = datetime.datetime.now()
+print(f"It took {(finish-start).seconds} seconds to run this code.")
+
 plt
 
