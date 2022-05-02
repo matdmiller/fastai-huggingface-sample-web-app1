@@ -71,7 +71,7 @@ print("number of parameters", len(model.parameters()))
     </py-repl><br>
     
     <div>
-      Due to a current but in the pyscript the &gt; symbol is imported as &ampgt;.<br>
+      Due to a current bug in pyscript the &gt; symbol is imported as &ampgt;.<br>
       Line 24 has been changed from: <br> 
       accuracy = [(yi &gt; 0) == (scorei.data &gt; 0) for yi, scorei in zip(yb, scores)]<br>
       to: <br>
@@ -131,7 +131,7 @@ for k in range(20): #was 100
     <div>
       Please wait for the training loop above to complete.  It will not print out stats until it is finished.<br>
       This will take some time.<br><br>
-      Due to a current but in the pyscript the &gt; symbol is imported as &ampgt;.<br>
+      Due to a current bug in pyscript the &gt; symbol is imported as &ampgt;.<br>
       Line 9 has been changed from: <br> 
       Z = np.array([s.data &gt; 0 for s in scores])<br>
       to: <br>
